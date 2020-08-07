@@ -35,7 +35,7 @@ public class ActividadPrincipal extends Activity {
         linear_principal.setGravity(Gravity.CENTER_HORIZONTAL);
         linear_principal.setGravity(Gravity.FILL);
 
-        linear_principal.setBackgroundColor(Color.rgb(250, 150, 50));
+        linear_principal.setBackgroundColor(Color.rgb(0, 0, 0));
 
         LinearLayout.LayoutParams parametrosPegadaLienzo = new
                 LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
