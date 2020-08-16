@@ -13,7 +13,6 @@ public class ActividadPrincipal extends Activity {
 
     private Gauge gauge_izquierda, gauge_derecha;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         crearElementosGui();
@@ -60,16 +59,8 @@ public class ActividadPrincipal extends Activity {
         parametros_pegada.setMargins(20, 20, 20, 20);
         parametros_pegada.weight = 1f;
 
-        /************************************************************/
-        gauge_derecha.setBackgroundColor(Color.MAGENTA);
-        gauge_derecha.setRadiusPercentage(0.7f);
-        gauge_derecha.setBarRanges(0, 20, 40, 100, 110, 120);
-        gauge_izquierda.setRange(0, 90);
-        gauge_izquierda.setTotalTicks(10);
-        gauge_izquierda.setBarRanges(0, 20, 30, 60, 60, 90);
         linear_derecho.addView(gauge_derecha, parametros_pegada);
         linear_izquierdo.addView(gauge_izquierda, parametros_pegada);
-        /************************************************************/
 
         LinearLayout.LayoutParams parametros_pegada_principal = new
                 LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -77,6 +68,31 @@ public class ActividadPrincipal extends Activity {
         linear_principal.addView(linear_izquierdo, parametros_pegada_principal);
         linear_principal.addView(linear_derecho, parametros_pegada_principal);
 
+        usarMetodosGauge();
         return linear_principal;
+    }
+
+    private void usarMetodosGauge() {
+        // Cambia el color de fondo
+        gauge_derecha.setBackgroundColor(Color.rgb(60, 179, 113));
+        // Cambia el color de las secciones circulares
+        gauge_derecha.setBarColors(Color.BLACK, Color.RED, Color.DKGRAY);
+        // Tamaño del gauge 50% el tamaño del layout
+        gauge_derecha.setRadiusPercentage(0.5f);
+        // Dibuja 5 ticks equidistantes
+        gauge_derecha.setTotalTicks(5);
+        // Coloca la aguja en la posicón 60
+        gauge_derecha.setValue(60);
+
+        // Gauge con rango 0 a 90
+        gauge_izquierda.setRange(0, 90);
+        // Dibuja 10 ticks equidistantes
+        gauge_izquierda.setTotalTicks(10);
+        // Coloca la aguja en el valor 70
+        gauge_izquierda.setValue(70);
+        // Cambia las unidades del gauge a psi
+        gauge_izquierda.changeUnits("psi");
+        // Cambia el rango de  las secciones circulares
+        gauge_izquierda.setBarRanges(0, 30, 30, 60, 60, 90);
     }
 }
